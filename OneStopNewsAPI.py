@@ -1,4 +1,5 @@
 from flask import Flask
+from flask import request
 import RSStoJSON
 
 # Switch Python version
@@ -9,11 +10,16 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    return "Hello World!"
+    return "Welcome to the One Stop News API."
 
-@app.route("/CNN_topstories")
-def topStories():
-    return str(RSStoJSON.CNN_topstories())
+
+#
+@app.route("/cnn/", methods=['GET'])
+def CNN():
+    
+    category = request.args.get('category')
+    
+    return str(RSStoJSON.CNN( category ))
 
 
 if __name__ == '__main__':
