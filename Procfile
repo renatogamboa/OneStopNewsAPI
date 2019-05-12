@@ -1,1 +1,1 @@
-web: gunicorn OneStopNews:app
+web: gunicorn OneStopNewsAPI:app
