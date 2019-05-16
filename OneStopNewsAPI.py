@@ -13,7 +13,7 @@ def hello():
     return "Welcome to the One Stop News API."
 
 
-#
+# CNN RSS
 @app.route("/cnn/", methods=['GET'])
 def CNN():
     
@@ -21,7 +21,23 @@ def CNN():
     
     return str(RSStoJSON.CNN( category ))
 
+# New York Times RSS
+@app.route("/new-york-times/", methods=['GET'])
+def NYT():
+
+    category = request.args.get('category')
+
+    return str(RSStoJSON.NYT( category ))
+
+# Huffington Post  RSS
+@app.route("/huff-post/", methods=['GET'])
+def Huff():
+
+    category = request.args.get('category')
+
+    return str(RSStoJSON.Huff( category ))
+
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
 
